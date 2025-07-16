@@ -3,3 +3,4 @@ Commit 2:The first commit was spent installing Next.js,tailwind.css and other pa
 Error(Semantic): When running the app instead of the homepage appearing, A generic next.js page is displayed
 Commit 3: delete page.tsx from app so routing works
 Commit 4: Added a Chart and fixed a div issue, learning that some components may be considered <p> or potentially other tags that cause conflict with code
+Commit 5: Added Ui enhancements to the total banks chart 
