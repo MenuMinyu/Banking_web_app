@@ -5,7 +5,7 @@ import TotalBalanceBox from '@/components/ui/TotalBalanceBox';
 const Home = () => {
   const loggedIn = { firstName: 'Menu'};
   return (
-    <section className="Home">Home
+    <section className="Home">
       <div className="home-content">
         <header className='home-header'>
           <HeaderBox
