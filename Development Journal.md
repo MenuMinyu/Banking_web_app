@@ -4,3 +4,7 @@ Error(Semantic): When running the app instead of the homepage appearing, A gener
 Commit 3: delete page.tsx from app so routing works
 Commit 4: Added a Chart and fixed a div issue, learning that some components may be considered <p> or potentially other tags that cause conflict with code
 Commit 5: Added Ui enhancements to the total banks chart 
+Commit 6: There was an error with the UI and an issue with pushing to git so it took a while to resolve
+Commit 7: Added ever present sidebar to UI.
+Error: all icons are overlapping on eachother and are in one place
+commit 8+9: separated icons by correcting capitalization in div property
