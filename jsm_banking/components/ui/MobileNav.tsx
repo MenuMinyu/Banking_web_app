@@ -1,17 +1,31 @@
-'use client'
-import { sidebarLinks } from '@/constants'
-import { cn } from '@/lib/utils'
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import React from 'react'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { sidebarLinks } from "@/constants"
+import { PathnameContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime"
+import Image from "next/image"
+import Link from "next/link"
 
-const Sidebar = ({ user }: SiderbarProps) => {
-    const pathname = usePathname();
+const MobileNav = ({ user }: MobileNavProps) => {
+  const pathname =
   return (
-    <section className="sidebar">
-        <nav className='flex flex-col gap-4'>
-            <Link href="/" className="mb-12 cursor-pointer items-center gap-2">
+    <section className="w-full max-w-[264px]">
+      <Sheet>
+        <SheetTrigger>
+          <Image src="/icons/hamburger.svg"
+            width={30}
+            height={30}
+            alt="menu"
+            className="cursor-pointer"/>
+        </SheetTrigger>
+
+        <SheetContent side="left">
+          <Link href="/" className="mb-12 cursor-pointer items-center gap-2">
                 <Image
                     src="/icons/logo.svg"
                     width={34}
@@ -23,7 +37,7 @@ const Sidebar = ({ user }: SiderbarProps) => {
             </Link>
 
             {sidebarLinks.map((item) => {
-                const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`)
+                const isActive = PathnameContext === item.route || pathname.startsWith(`${item.route}/`)
                 return (
                     <Link href={item.route} key={item.label} className={cn('sidebar-link', {'bg-bank-gradient': isActive })}>
                         <div className="relative size-6">
@@ -40,15 +54,10 @@ const Sidebar = ({ user }: SiderbarProps) => {
                             {item.label}
                         </p>
                     </Link>
-                )
-            })}
-
-            USER
-                </nav>
-
-            FOOTER    
-            </section>
+        </SheetContent>
+  </Sheet>
+</section>
   )
 }
 
-export default Sidebar
+export default MobileNav
