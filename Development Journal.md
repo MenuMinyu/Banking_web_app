@@ -8,3 +8,4 @@ Commit 6: There was an error with the UI and an issue with pushing to git so it 
 Commit 7: Added ever present sidebar to UI.
 Error: all icons are overlapping on eachother and are in one place
 commit 8+9: separated icons by correcting capitalization in div property
+commit 10: The layout of the home page is close to being finalized, with responsive animated sidebars being added, credit cards and details
