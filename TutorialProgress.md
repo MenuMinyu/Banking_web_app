@@ -1,2 +1,2 @@
-https://youtu.be/PuOVqP_cjkE?feature=shared&t=3776
-Time: 1:02:56
+https://youtu.be/PuOVqP_cjkE?feature=shared&t=6101
+Time: 1:41:41
