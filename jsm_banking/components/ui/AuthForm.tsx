@@ -19,6 +19,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import CustomInput from './CustomInput';
+import { authFormSchema } from '@/lib/utils';
+import { Loader2 } from 'lucide-react';
 
 const formSchema = z.object({
   email: z.string().email()
@@ -27,19 +29,23 @@ const formSchema = z.object({
 
 const AuthForm = ({ type }: {type: string}) => {
     const [user, setUser] = useState(null)
+    const [isLoading, SetIsLoading] = useState(true)
      // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof authFormSchema>>({
+    resolver: zodResolver(authFormSchema),
     defaultValues: {
       email: "",
+      password:''
     },
   })
  
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof authFormSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+    SetIsLoading(true)
     console.log(values)
+    SetIsLoading(false)
   }
   
   return (
@@ -84,14 +90,23 @@ const AuthForm = ({ type }: {type: string}) => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         
         <CustomInput
-          form={form} name="email" label="Email" placeholder="Enter your email"
+          control={form.control} name="email" label="Email" placeholder="Enter your email"
           />
 
         <CustomInput
-          form={form} name="password" label="Password" placeholder="Enter your password"
+          control={form.control} name="password" label="Password" placeholder="Enter your password"
           />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={isLoading} className="form-btn">
+          {isLoading ? (
+          <>
+            <Loader2 size={20} className="animate-spin"/> &nbsp;
+            Loading...
+            </>
+          ) : type === 'sign-in'
+            ? 'Sign in' : 'sign up'}
+            
+        </Button>
       </form>
     </Form>
         </>
